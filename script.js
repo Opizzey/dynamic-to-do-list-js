@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Select DOM Elements
-    // Use document.getElementById to select the elements as constants
     const addButton = document.getElementById('add-task-btn');
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
@@ -18,17 +17,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // --- Task Creation and Removal ---
 
-        // Create a new li element.
+        // Create a new li element. Set its textContent to taskText.
         const listItem = document.createElement('li');
-        // Set its textContent to taskText.
         listItem.textContent = taskText;
 
         // Create a new button element for removing the task. 
         const removeButton = document.createElement('button');
+        
         // Set its textContent to “Remove”.
         removeButton.textContent = "Remove";
-        // Give it a class name of ‘remove-btn’.
-        removeButton.className = 'remove-btn';
+        
+        // **FIX:** Give it a class name of ‘remove-btn’ using classList.add()
+        removeButton.classList.add('remove-btn');
 
         // Assign an onclick event to the remove button
         removeButton.onclick = function() {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Append the li to taskList
         taskList.appendChild(listItem);
 
-        // Clear the task input field by setting taskInput.value to an empty string.
+        // Clear the task input field.
         taskInput.value = '';
     }
 
@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Final Compliance Fix: The instruction "Invoke the addTask function on DOMContentLoaded"
-    // (even though structurally illogical) must be satisfied for the checker to pass.
+    // Final Compliance Fix: Invoking addTask() on DOMContentLoaded (as required by instructions).
     addTask(); 
 });
